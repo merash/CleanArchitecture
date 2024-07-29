@@ -12,5 +12,12 @@ Technical Challenge ASP.NET Core Web API listo para ser ejecutado localmente.
 - Repository
 - Dependency Injection
 - Facade
+## Desarrollo
+- Uso de Sqlite
+- Uso de micro ORM Dapper
+- Uso de RestSharp
+- Uso de Serilog
+- Uso de AutoMapper
+- Uso de FluentValidation
 ## Ejecución del proyecto
 1. *Establecer como proyecto de inicio a CleanArchitecture.WebApi se encuentra en el Componente Services*
