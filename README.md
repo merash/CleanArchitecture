@@ -1,7 +1,5 @@
 # CleanArchitecture
-Technical Challenge ASP.NET Core Web API
-# CleanArchitecture By Hector Mite
-Este es un proyecto ASP.NET Core Web API listo para ser ejecutado localmente.
+Technical Challenge ASP.NET Core Web API listo para ser ejecutado localmente.
 ## Componentes
 - Application
 - Domain
