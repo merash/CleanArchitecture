@@ -8,5 +8,12 @@ Separado por componentes
 - Domain
 - Infrastructure
 - Services
+## Patrones de diseño
+- CQRS
+- Mediator
+- Unit Of Work
+- Repository
+- Dependency Injection
+- Facade
 ## Ejecución del proyecto
 1. *Establecer como proyecto de inicio a CleanArchitecture.WebApi se encuentra en el Componente Services*
