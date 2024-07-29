@@ -1,0 +1,12 @@
+2024-07-29 13:56:39.436 -05:00 [INF] Start Request GetByProductIdQuery
+2024-07-29 13:56:39.443 -05:00 [INF] Send Request Parameter/Body: {"ProductId":1}
+2024-07-29 13:56:40.190 -05:00 [INF] Return Response: {"succcess":true,"Data":{"ProductId":1,"Name":"WT19WV6","StatusName":"Inactive","Stock":10,"Description":"Lavadora Autom\u00E1tica LG WT19WV6 | 19 Kg Carga Superior Color Blanco","Price":499.99,"Discount":70,"FinalPrice":149.997},"Message":"Query succeed!","Errors":null}
+2024-07-29 13:56:40.191 -05:00 [WRN] End Request: GetByProductIdQuery in 743 milliseconds
+2024-07-29 13:56:55.419 -05:00 [INF] Start Request GetByProductIdQuery
+2024-07-29 13:56:55.419 -05:00 [INF] Send Request Parameter/Body: {"ProductId":2}
+2024-07-29 13:56:55.871 -05:00 [INF] Return Response: {"succcess":true,"Data":{"ProductId":2,"Name":"WT21MV6","StatusName":"Active","Stock":10,"Description":"Lavadora Autom\u00E1tica LG WT21MV6 | 21 Kg Carga Superior Color Gris","Price":650.01,"Discount":70,"FinalPrice":195.003},"Message":"Query succeed!","Errors":null}
+2024-07-29 13:56:55.871 -05:00 [WRN] End Request: GetByProductIdQuery in 1195 milliseconds
+2024-07-29 14:00:15.595 -05:00 [INF] Start Request GetByProductIdQuery
+2024-07-29 14:00:15.605 -05:00 [INF] Send Request Parameter/Body: {"ProductId":3}
+2024-07-29 14:00:16.608 -05:00 [INF] Return Response: {"succcess":true,"Data":{"ProductId":3,"Name":"WP15MAR","StatusName":"Active","Stock":10,"Description":"Lavadora Carga Superior LG WP15MAR |15 Kg Color Negro","Price":319.99,"Discount":70,"FinalPrice":95.997},"Message":"Query succeed!","Errors":null}
+2024-07-29 14:00:16.608 -05:00 [WRN] End Request: GetByProductIdQuery in 961 milliseconds
