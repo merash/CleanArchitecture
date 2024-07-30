@@ -1,6 +1,7 @@
 using CleanArchitecture.Application.UseCases.Products.Commands.CreateProductCommand;
 using CleanArchitecture.Application.UseCases.Products.Commands.UpdateProductCommand;
 using CleanArchitecture.Application.UseCases.Products.Queries.GetByProductIdQuery;
+using CleanArchitecture.Application.UseCases.Products.Queries.GetProductsQuery;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -41,10 +42,20 @@ namespace CleanArchitecture.WebApi.Controllers
             return BadRequest(response);
         }
 
-        [HttpGet("GetById")]
-        public async Task<IActionResult> GetById([FromQuery] long ProductId)
+        [HttpGet("GetById/{ProductId}")]
+        public async Task<IActionResult> GetById(long ProductId)
         {
             var response = await this.mediator.Send(new GetByProductIdQuery() { ProductId = ProductId });
+            if (response.succcess)
+                return Ok(response);
+
+            return BadRequest(response);
+        }
+
+        [HttpGet("Get")]
+        public async Task<IActionResult> Get()
+        {
+            var response = await this.mediator.Send(new GetProductsQuery());
             if (response.succcess)
                 return Ok(response);
 

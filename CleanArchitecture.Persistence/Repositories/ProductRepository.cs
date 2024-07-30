@@ -45,5 +45,14 @@ namespace CleanArchitecture.Persistence.Repositories
 
             return connection.QueryFirstOrDefault<Product>(sql, param: parameters);
         }
+
+        public List<Product> Get()
+        {
+            using var connection = this.context.CreateConnection();
+
+            string sql = "SELECT * FROM Product";
+
+            return connection.Query<Product>(sql).ToList();
+        }
     }
 }
