@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using CleanArchitecture.Application.Dto;
+using CleanArchitecture.Application.Interface.External;
+using CleanArchitecture.Application.Interface.Persistence;
 using CleanArchitecture.Application.UseCases.Commons.Bases;
 using MediatR;
 using Microsoft.Extensions.Caching.Memory;
@@ -8,35 +10,35 @@ namespace CleanArchitecture.Application.UseCases.Products.Queries.GetByProductId
 {
     public class GetByProductIdHandler : IRequestHandler<GetByProductIdQuery, BaseResponse<ProductDto>>
     {
-        private readonly Interface.Persistence.IUnitOfWork _unitOfWorkPersistence;
-        private readonly Interface.External.IUnitOfWork _unitOfWorkExternal;
-        private readonly IMapper _mapper;
-        private readonly IMemoryCache _memoryCache;
+        readonly IUnitOfWork unitOfWork;
+        readonly IDiscountRepository discountRepository;
+        readonly IMapper mapper;
+        readonly IMemoryCache memoryCache;
 
-        public GetByProductIdHandler(Interface.Persistence.IUnitOfWork unitOfWorkPersistence, Interface.External.IUnitOfWork unitOfWorkExternal, IMapper mapper, IMemoryCache memoryCache)
+        public GetByProductIdHandler(IUnitOfWork unitOfWork, IDiscountRepository discountRepository, IMapper mapper, IMemoryCache memoryCache)
         {
-            _unitOfWorkPersistence = unitOfWorkPersistence ?? throw new ArgumentNullException(nameof(unitOfWorkPersistence));
-            _unitOfWorkExternal = unitOfWorkExternal ?? throw new ArgumentNullException(nameof(unitOfWorkExternal));
-            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-            _memoryCache = memoryCache ?? throw new ArgumentNullException(nameof(memoryCache));
+            this.unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
+            this.discountRepository = discountRepository ?? throw new ArgumentNullException(nameof(discountRepository));
+            this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            this.memoryCache = memoryCache ?? throw new ArgumentNullException(nameof(memoryCache));
 
-            _memoryCache.Set("Status", new Dictionary<int, string> { { 1, "Active" }, { 0, "Inactive" } }, new MemoryCacheEntryOptions { SlidingExpiration = TimeSpan.FromMinutes(5) });
+            this.memoryCache.Set("Status", new Dictionary<int, string> { { 1, "Active" }, { 0, "Inactive" } }, new MemoryCacheEntryOptions { SlidingExpiration = TimeSpan.FromMinutes(5) });
         }
 
-        public async Task<BaseResponse<ProductDto>> Handle(GetByProductIdQuery request, CancellationToken cancellationToken)
+        public Task<BaseResponse<ProductDto>> Handle(GetByProductIdQuery request, CancellationToken cancellationToken)
         {
             var response = new BaseResponse<ProductDto>();
             try
             {
-                var product = _unitOfWorkPersistence.Products.Get(request.ProductId);
+                var product = this.unitOfWork.Products.Get(request.ProductId);
                 if (product is not null)
                 {
-                    response.Data = _mapper.Map<ProductDto>(product);
+                    response.Data = this.mapper.Map<ProductDto>(product);
 
-                    _memoryCache.TryGetValue("Status", out Dictionary<int, string> status);
-                    response.Data.StatusName = status[product.Status];
+                    this.memoryCache.TryGetValue("Status", out Dictionary<int, string>? status);
+                    response.Data.StatusName = status?[product.Status];
 
-                    response.Data.Discount = _unitOfWorkExternal.Discounts.Get().discount;
+                    response.Data.Discount = this.discountRepository.GetDiscount();
                     response.Data.FinalPrice = response.Data.Price * (100 - response.Data.Discount) / 100;
                     response.succcess = true;
                     response.Message = "Query succeed!";
@@ -46,7 +48,7 @@ namespace CleanArchitecture.Application.UseCases.Products.Queries.GetByProductId
             {
                 response.Message = ex.Message;
             }
-            return response;
+            return Task.FromResult(response);
         }
     }
 }

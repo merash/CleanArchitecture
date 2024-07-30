@@ -2,7 +2,8 @@
 
 namespace CleanArchitecture.Application.Interface.External
 {
-    public interface IDiscountRepository : IGenericRepository<Discount>
+    public interface IDiscountRepository
     {
+        int GetDiscount();
     }
 }

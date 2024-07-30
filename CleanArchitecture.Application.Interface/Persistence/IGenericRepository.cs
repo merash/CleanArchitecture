@@ -4,6 +4,6 @@
     {
         bool Insert(T entity);
         bool Update(T entity);
-        T Get(long ProductId);
+        T? Get(long ProductId);
     }
 }

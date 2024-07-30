@@ -8,24 +8,24 @@ namespace CleanArchitecture.External.Repositories
 {
     public class DiscountRepository : IDiscountRepository
     {
-        private readonly RestSharpContext _applicationContext;
+        readonly RestSharpContext restSharpContext;
 
-        public DiscountRepository(RestSharpContext applicationContext)
+        public DiscountRepository(RestSharpContext restSharpContext)
         {
-            _applicationContext = applicationContext ?? throw new ArgumentNullException(nameof(applicationContext));
+            this.restSharpContext = restSharpContext ?? throw new ArgumentNullException(nameof(restSharpContext));
         }
 
-        public Discount Get()
+        public int GetDiscount()
         {
-            using var connection = _applicationContext.CreateConnection();
+            using var connection = this.restSharpContext.CreateConnection();
 
             RestRequest request = new RestRequest("api/GetDiscount", Method.Get);
             var response = connection.Get(request);
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
-                throw new Exception("API de Equivalencias no disponible, favor revisar con sistemas");
-            var content = JsonConvert.DeserializeObject<List<Discount>>(response.Content);
+                throw new Exception("API GetDiscount no disponible");
+            var discounts = JsonConvert.DeserializeObject<List<Discount>>(response.Content ?? "[]");
 
-            return content.FirstOrDefault();
+            return discounts?.FirstOrDefault()?.discount ?? 0;
         }
     }
 }

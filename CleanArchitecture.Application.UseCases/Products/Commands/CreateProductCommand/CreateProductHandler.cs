@@ -8,22 +8,22 @@ namespace CleanArchitecture.Application.UseCases.Products.Commands.CreateProduct
 {
     public class CreateProductHandler : IRequestHandler<CreateProductCommand, BaseResponse<bool>>
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
+        readonly IUnitOfWork unitOfWork;
+        readonly IMapper mapper;
 
         public CreateProductHandler(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
-            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            this.unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
+            this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
-        public async Task<BaseResponse<bool>> Handle(CreateProductCommand command, CancellationToken cancellationToken)
+        public Task<BaseResponse<bool>> Handle(CreateProductCommand command, CancellationToken cancellationToken)
         {
             var response = new BaseResponse<bool>();
             try
             {
-                var product = _mapper.Map<Product>(command);
-                response.Data = _unitOfWork.Products.Insert(product);
+                var product = this.mapper.Map<Product>(command);
+                response.Data = this.unitOfWork.Products.Insert(product);
                 if (response.Data)
                 {
                     response.succcess = true;
@@ -34,7 +34,7 @@ namespace CleanArchitecture.Application.UseCases.Products.Commands.CreateProduct
             {
                 response.Message = ex.Message;
             }
-            return response;
+            return Task.FromResult(response);
         }
     }
 }

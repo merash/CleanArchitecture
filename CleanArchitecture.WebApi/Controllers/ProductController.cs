@@ -10,11 +10,11 @@ namespace CleanArchitecture.WebApi.Controllers
     [Route("[controller]")]
     public class ProductController : ControllerBase
     {
-        private readonly IMediator _mediator;
+        private readonly IMediator mediator;
 
         public ProductController(IMediator mediator)
         {
-            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+            this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
         [HttpPost("Insert")]
@@ -22,7 +22,7 @@ namespace CleanArchitecture.WebApi.Controllers
         {
             if (command is null) return BadRequest();
 
-            var response = await _mediator.Send(command);
+            var response = await this.mediator.Send(command);
             if (response.succcess)
                 return Ok(response);
 
@@ -34,7 +34,7 @@ namespace CleanArchitecture.WebApi.Controllers
         {
             if (command is null) return BadRequest();
 
-            var response = await _mediator.Send(command);
+            var response = await this.mediator.Send(command);
             if (response.succcess)
                 return Ok(response);
 
@@ -44,7 +44,7 @@ namespace CleanArchitecture.WebApi.Controllers
         [HttpGet("GetById")]
         public async Task<IActionResult> GetById([FromQuery] long ProductId)
         {
-            var response = await _mediator.Send(new GetByProductIdQuery() { ProductId = ProductId });
+            var response = await this.mediator.Send(new GetByProductIdQuery() { ProductId = ProductId });
             if (response.succcess)
                 return Ok(response);
 

@@ -7,13 +7,12 @@ namespace CleanArchitecture.External
 {
     public static class ConfigureServices
     {
-        public static IServiceCollection AddInjectionExternal(this IServiceCollection services)
+        public static IServiceCollection AddInjectionExternal(this IServiceCollection serviceCollection)
         {
-            services.AddSingleton<RestSharpContext>();
-            services.AddScoped<IDiscountRepository, DiscountRepository>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            serviceCollection.AddSingleton<RestSharpContext>();
+            serviceCollection.AddScoped<IDiscountRepository, DiscountRepository>();
 
-            return services;
+            return serviceCollection;
         }
     }
 }

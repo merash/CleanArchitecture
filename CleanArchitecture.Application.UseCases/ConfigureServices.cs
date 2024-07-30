@@ -8,15 +8,15 @@ namespace CleanArchitecture.Application.UseCases
 {
     public static class ConfigureServices
     {
-        public static void AddInjectionApplication(this IServiceCollection services)
+        public static void AddInjectionApplication(this IServiceCollection serviceCollection)
         {
-            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
-            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-            services.AddMemoryCache();
+            serviceCollection.AddMediatR(configuration => configuration.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
+            serviceCollection.AddAutoMapper(Assembly.GetExecutingAssembly());
+            serviceCollection.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            serviceCollection.AddMemoryCache();
 
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
-            services.AddSingleton(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>));
+            serviceCollection.AddSingleton(typeof(IPipelineBehavior<,>), typeof(LoggerBehaviour<,>));
+            serviceCollection.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
         }
     }
 }

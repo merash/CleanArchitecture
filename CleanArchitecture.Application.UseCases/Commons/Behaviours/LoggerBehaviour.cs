@@ -5,15 +5,14 @@ using System.Text.Json;
 
 namespace CleanArchitecture.Application.UseCases.Commons.Behaviours
 {
-    public class PerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
+    public class LoggerBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
     {
-        private readonly Stopwatch _timer;
+        readonly Stopwatch stopwatch;
 
-        public PerformanceBehaviour()
+        public LoggerBehaviour()
         {
-            _timer = new Stopwatch() ?? throw new ArgumentNullException(nameof(Stopwatch));
-
-            Log.Logger = new LoggerConfiguration().WriteTo.File(@"..\CleanArchitecture.Logs\Log.txt").CreateLogger();
+            Log.Logger = new LoggerConfiguration().WriteTo.File(@"..\CleanArchitecture.Logs\Log.txt").CreateLogger() ?? throw new ArgumentNullException(nameof(LoggerConfiguration));
+            this.stopwatch = new Stopwatch() ?? throw new ArgumentNullException(nameof(Stopwatch));
         }
 
         public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
@@ -23,13 +22,13 @@ namespace CleanArchitecture.Application.UseCases.Commons.Behaviours
 
             Log.Information(String.Format("Send Request Parameter/Body: {0}", JsonSerializer.Serialize(request)));
 
-            _timer.Start();
+            this.stopwatch.Start();
             var response = await next();
-            _timer.Stop();
+            this.stopwatch.Stop();
 
             Log.Information(String.Format("Return Response: {0}", JsonSerializer.Serialize(response)));
 
-            var elapsedMilliseconds = _timer.ElapsedMilliseconds;
+            var elapsedMilliseconds = this.stopwatch.ElapsedMilliseconds;
             Log.Warning(String.Format("End Request: {0} in {1} milliseconds", requestName, elapsedMilliseconds));
 
             return response;
