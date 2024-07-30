@@ -11,7 +11,6 @@ namespace CleanArchitecture.Persistence.Repositories
         public ProductRepository(Context context)
         {
             this.context = context ?? throw new ArgumentNullException(nameof(context));
-            this.context.Database.EnsureCreated();
         }
 
         public bool Insert(Product entity)

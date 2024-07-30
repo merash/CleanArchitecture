@@ -32,6 +32,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchitecture.WebApi.Test", "CleanArchitecture.WebApi.Test\CleanArchitecture.WebApi.Test.csproj", "{13DFB666-5290-4AC9-A94B-73DFD3C78D28}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LocalDB", "LocalDB", "{3C5E746E-DDC6-4821-A9D0-E31EE2C57812}"
+	ProjectSection(SolutionItems) = preProject
+		Products.db = Products.db
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
