@@ -6,18 +6,18 @@ namespace CleanArchitecture.Persistence.Contexts
 {
     public class Context : DbContext
     {
-        readonly IConfiguration Configuration;
+        readonly IConfiguration configuration;
 
         public Context(IConfiguration configuration)
         {
-            Configuration = configuration;
+            this.configuration = configuration;
         }
 
         public DbSet<Product> Product { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlite(Configuration.GetConnectionString("Default"));
+            options.UseSqlite(this.configuration.GetConnectionString("Default"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

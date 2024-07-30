@@ -76,3 +76,51 @@
 2024-07-30 00:32:54.825 -05:00 [INF] Send Request Parameter/Body: {}
 2024-07-30 00:32:55.940 -05:00 [INF] Return Response: {"succcess":true,"Data":[{"ProductId":1,"Name":"WT19WV6","Status":0,"Stock":10,"Description":"Lavadora Autom\u00E1tica LG WT19WV6 | 19 Kg Carga Superior Color Blanco","Price":499.99},{"ProductId":2,"Name":"WT21MV6","Status":1,"Stock":10,"Description":"Lavadora Autom\u00E1tica LG WT21MV6 | 21 Kg Carga Superior Color Gris","Price":650.01},{"ProductId":3,"Name":"WP15MAR","Status":1,"Stock":10,"Description":"Lavadora Carga Superior LG WP15MAR |15 Kg Color Negro","Price":319.99},{"ProductId":4,"Name":"WT19MV6","Status":1,"Stock":10,"Description":"Lavadora Autom\u00E1tica LG WT19MV6 | 19 Kg Carga Superior Color Gris","Price":569.99},{"ProductId":5,"Name":"REDMIA33GBAZU-W","Status":1,"Stock":10,"Description":"Celular Xiaomi Redmi A3 P8918 | 6.41\u0027 3GB RAM 64GB Memoria Interna Color Star Blue","Price":91.51},{"ProductId":6,"Name":"43UR7800PSB","Status":1,"Stock":10,"Description":"Televisor LED Smart LG UR78 | 43\u0027 4K UHD ThinQ AI Color Negro","Price":359.98}],"Message":"Query succeed!","Errors":null}
 2024-07-30 00:32:55.940 -05:00 [WRN] End Request: GetProductsQuery in 1101 milliseconds
+2024-07-30 00:50:35.599 -05:00 [INF] Start Request GetProductsQuery
+2024-07-30 00:50:35.607 -05:00 [INF] Send Request Parameter/Body: {}
+2024-07-30 00:50:46.863 -05:00 [INF] Return Response: {"succcess":true,"Data":[{"ProductId":1,"Name":"WT19WV6","Status":1,"Stock":10,"Description":"Lavadora Autom\u00E1tica LG WT19WV6 | 19 Kg Carga Superior Color Blanco","Price":499.99},{"ProductId":2,"Name":"WT21MV6","Status":1,"Stock":10,"Description":"Lavadora Autom\u00E1tica LG WT21MV6 | 21 Kg Carga Superior Color Gris","Price":650.01},{"ProductId":3,"Name":"WP15MAR","Status":1,"Stock":10,"Description":"Lavadora Carga Superior LG WP15MAR |15 Kg Color Negro","Price":319.99},{"ProductId":4,"Name":"WT19MV6","Status":1,"Stock":10,"Description":"Lavadora Autom\u00E1tica LG WT19MV6 | 19 Kg Carga Superior Color Gris","Price":569.99},{"ProductId":5,"Name":"REDMIA33GBAZU-W","Status":1,"Stock":10,"Description":"Celular Xiaomi Redmi A3 P8918 | 6.41\u0027 3GB RAM 64GB Memoria Interna Color Star Blue","Price":91.51},{"ProductId":6,"Name":"43UR7800PSB","Status":1,"Stock":10,"Description":"Televisor LED Smart LG UR78 | 43\u0027 4K UHD ThinQ AI Color Negro","Price":359.98},{"ProductId":7,"Name":"FZ10-21AR","Status":1,"Stock":10,"Description":"Ventilador de Torre Midea FZ10-21AR | 5 Velocidades Color Negro","Price":89.99}],"Message":"Query succeed!","Errors":null}
+2024-07-30 00:50:46.864 -05:00 [WRN] End Request: GetProductsQuery in 11249 milliseconds
+2024-07-30 00:53:30.157 -05:00 [INF] Start Request GetProductsQuery
+2024-07-30 00:53:30.167 -05:00 [INF] Send Request Parameter/Body: {}
+2024-07-30 00:53:32.689 -05:00 [INF] Return Response: {"succcess":false,"Data":null,"Message":"SQLite Error 1: \u0027no such table: Product\u0027.","Errors":null}
+2024-07-30 00:53:32.689 -05:00 [WRN] End Request: GetProductsQuery in 2520 milliseconds
+2024-07-30 00:54:33.751 -05:00 [INF] Start Request GetProductsQuery
+2024-07-30 00:54:33.762 -05:00 [INF] Send Request Parameter/Body: {}
+2024-07-30 00:54:44.503 -05:00 [INF] Return Response: {"succcess":false,"Data":null,"Message":"SQLite Error 1: \u0027no such table: Product\u0027.","Errors":null}
+2024-07-30 00:54:44.503 -05:00 [WRN] End Request: GetProductsQuery in 10737 milliseconds
+2024-07-30 00:55:02.121 -05:00 [INF] Start Request GetProductsQuery
+2024-07-30 00:55:02.128 -05:00 [INF] Send Request Parameter/Body: {}
+2024-07-30 00:55:15.511 -05:00 [INF] Return Response: {"succcess":false,"Data":null,"Message":"SQLite Error 1: \u0027no such table: Product\u0027.","Errors":null}
+2024-07-30 00:55:15.512 -05:00 [WRN] End Request: GetProductsQuery in 13381 milliseconds
+2024-07-30 00:55:34.661 -05:00 [INF] Start Request GetProductsQuery
+2024-07-30 00:55:34.670 -05:00 [INF] Send Request Parameter/Body: {}
+2024-07-30 00:55:37.257 -05:00 [INF] Return Response: {"succcess":false,"Data":null,"Message":"An attempt was made to use the context instance while it is being configured. A DbContext instance cannot be used inside \u0027OnConfiguring\u0027 since it is still being configured at this point. This can happen if a second operation is started on this context instance before a previous operation completed. Any instance members are not guaranteed to be thread safe.","Errors":null}
+2024-07-30 00:55:37.257 -05:00 [WRN] End Request: GetProductsQuery in 2583 milliseconds
+2024-07-30 00:55:50.982 -05:00 [INF] Start Request GetProductsQuery
+2024-07-30 00:55:50.982 -05:00 [INF] Send Request Parameter/Body: {}
+2024-07-30 00:56:01.449 -05:00 [INF] Return Response: {"succcess":false,"Data":null,"Message":"An attempt was made to use the context instance while it is being configured. A DbContext instance cannot be used inside \u0027OnConfiguring\u0027 since it is still being configured at this point. This can happen if a second operation is started on this context instance before a previous operation completed. Any instance members are not guaranteed to be thread safe.","Errors":null}
+2024-07-30 00:56:01.449 -05:00 [WRN] End Request: GetProductsQuery in 13050 milliseconds
+2024-07-30 00:57:38.060 -05:00 [INF] Start Request GetProductsQuery
+2024-07-30 00:57:38.068 -05:00 [INF] Send Request Parameter/Body: {}
+2024-07-30 00:57:57.198 -05:00 [INF] Return Response: {"succcess":false,"Data":null,"Message":"SQLite Error 1: \u0027no such table: Product\u0027.","Errors":null}
+2024-07-30 00:57:57.198 -05:00 [WRN] End Request: GetProductsQuery in 19128 milliseconds
+2024-07-30 00:58:53.571 -05:00 [INF] Start Request GetProductsQuery
+2024-07-30 00:58:53.591 -05:00 [INF] Send Request Parameter/Body: {}
+2024-07-30 00:59:34.007 -05:00 [INF] Return Response: {"succcess":false,"Data":null,"Message":"SQLite Error 1: \u0027no such table: Product\u0027.","Errors":null}
+2024-07-30 00:59:34.007 -05:00 [WRN] End Request: GetProductsQuery in 40411 milliseconds
+2024-07-30 01:00:15.899 -05:00 [INF] Start Request GetProductsQuery
+2024-07-30 01:00:15.907 -05:00 [INF] Send Request Parameter/Body: {}
+2024-07-30 01:00:21.880 -05:00 [INF] Return Response: {"succcess":false,"Data":null,"Message":"SQLite Error 1: \u0027no such table: Product\u0027.","Errors":null}
+2024-07-30 01:00:21.880 -05:00 [WRN] End Request: GetProductsQuery in 5970 milliseconds
+2024-07-30 01:01:17.759 -05:00 [INF] Start Request GetProductsQuery
+2024-07-30 01:01:17.767 -05:00 [INF] Send Request Parameter/Body: {}
+2024-07-30 01:01:23.329 -05:00 [INF] Return Response: {"succcess":true,"Data":[],"Message":"Query succeed!","Errors":null}
+2024-07-30 01:01:23.330 -05:00 [WRN] End Request: GetProductsQuery in 5553 milliseconds
+2024-07-30 01:02:06.732 -05:00 [INF] Start Request GetProductsQuery
+2024-07-30 01:02:06.739 -05:00 [INF] Send Request Parameter/Body: {}
+2024-07-30 01:02:10.871 -05:00 [INF] Return Response: {"succcess":true,"Data":[],"Message":"Query succeed!","Errors":null}
+2024-07-30 01:02:10.871 -05:00 [WRN] End Request: GetProductsQuery in 4127 milliseconds
+2024-07-30 01:03:55.345 -05:00 [INF] Start Request GetProductsQuery
+2024-07-30 01:03:55.353 -05:00 [INF] Send Request Parameter/Body: {}
+2024-07-30 01:03:55.828 -05:00 [INF] Return Response: {"succcess":true,"Data":[{"ProductId":1,"Name":"WT19WV6","Status":1,"Stock":10,"Description":"Lavadora Autom\u00E1tica LG WT19WV6 | 19 Kg Carga Superior Color Blanco","Price":499.99}],"Message":"Query succeed!","Errors":null}
+2024-07-30 01:03:55.828 -05:00 [WRN] End Request: GetProductsQuery in 468 milliseconds
