@@ -7,13 +7,13 @@ namespace CleanArchitecture.Persistence
 {
     public static class ConfigureServices
     {
-        public static IServiceCollection AddInjectionPersistence(this IServiceCollection services)
+        public static IServiceCollection AddInjectionPersistence(this IServiceCollection serviceCollection)
         {
-            services.AddSingleton<DapperContext>();
-            services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            serviceCollection.AddSingleton<Context>();
+            serviceCollection.AddScoped<IProductRepository, ProductRepository>();
+            serviceCollection.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            return services;
+            return serviceCollection;
         }
     }
 }
